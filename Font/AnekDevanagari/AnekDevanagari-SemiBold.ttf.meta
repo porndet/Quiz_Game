@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 0e1e864af1cd1bb4eabb0581d69a5520
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Anek Devanagari
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3c0b4aa448d74574fb391185189cf0d8, type: 3}
+  - {fileID: 12800000, guid: 3d00230d7f840784fb7564f25d4e1cb6, type: 3}
+  - {fileID: 12800000, guid: 132d4537ba31b01419de1fcbe34dbe1b, type: 3}
+  - {fileID: 12800000, guid: f5a52580865c2464ea8e4a5ac8653e6d, type: 3}
+  - {fileID: 12800000, guid: c55d1d8afd9aac640915eae004115db9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
