@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //123544
     [SerializeField] private GameObject PanelAnswer;
     [SerializeField] public GameObject ButtonAns;
     private const int lengthArr = 4;
