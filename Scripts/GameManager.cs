@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject PanelAnswer;
-    [SerializeField] public GameObject ButtonAns;
+    [SerializeField] public GameObject ButtonAns; 
+    public static List<int> User_ansT = new List<int>();
     public int length_arr = 4;
-    public List<int> User_ans = new List<int>();
 }

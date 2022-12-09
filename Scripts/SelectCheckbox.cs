@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SelectCheckbox : MonoBehaviour
 {
@@ -84,10 +85,14 @@ public class SelectCheckbox : MonoBehaviour
     public void User_SelectAns(){
         for(int i = 0; i < G1.length_arr; i++){
             if(selectAns[i].transform.GetComponent<Toggle>().isOn){
-                G1.User_ans.Add(i + 1);
+                GameManager.User_ansT.Add(i + 1);
             }
         }
 
-        Debug.Log(G1.User_ans[0]);
+        for(int i = 0; i < GameManager.User_ansT.Count; i++){
+            Debug.Log(GameManager.User_ansT[i]);
+        }
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
