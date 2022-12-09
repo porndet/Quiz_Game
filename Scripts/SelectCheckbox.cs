@@ -89,9 +89,9 @@ public class SelectCheckbox : MonoBehaviour
             }
         }
 
-        for(int i = 0; i < GameManager.User_ansT.Count; i++){
-            Debug.Log(GameManager.User_ansT[i]);
-        }
+        // for(int i = 0; i < GameManager.User_ansT.Count; i++){
+        //     Debug.Log(GameManager.User_ansT[i]);
+        // }
         
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

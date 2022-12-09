@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     public int length_arr = 4;
 
     void Start(){
-        // Debug.Log(SceneManager.GetActiveScene().buildIndex);
         StartCoroutine(GetRequest("http://127.0.0.1/dashboard/website_project/FetchDataDB/QuizGame.php", SceneManager.GetActiveScene().buildIndex + 1));
     }
 
@@ -41,27 +40,7 @@ public class GameManager : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     string data = webRequest.downloadHandler.text;
-                    // JSONNode jsonNode = JSON.Parse(webRequest.downloadHandler.text);
-                    // foreach(JSONNode n in jsonNode)
-                    // {
-                    //     // idList.Add(n["id"]);
-                    //     // eyeleft.Add(n["Eyeleft"]);
-                    //     // eyeright.Add(n["Eyeright"]);
-                    //     // nose.Add(n["nose"]);
-                    //     // mouse.Add(n["mouse"]);
-                    // }
-
-                    // datalist.Add(idList);
-                    // datalist.Add(eyeleft);
-                    // datalist.Add(eyeright);
-                    // datalist.Add(nose);
-                    // datalist.Add(mouse);
-
-                    // LoadImage("EyeLeft", eyeleft[0]);
-                    // LoadImage("EyeRight", eyeright[0]);
-                    // LoadImage("Nose", nose[0]);
-                    // LoadImage("Mouth", mouse[0]);
-
+                    Debug.Log(data);
                     break;
             }
         }
