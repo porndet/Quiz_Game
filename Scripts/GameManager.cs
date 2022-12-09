@@ -6,6 +6,7 @@ using SimpleJSON;
 using TMPro;
 using System.IO;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,14 +16,15 @@ public class GameManager : MonoBehaviour
     public int length_arr = 4;
 
     void Start(){
-        // StartCoroutine(GetRequest("http://127.0.0.1/dashboard/website_project/FetchDataDB/FukuwaraiGame.php"));
+        // Debug.Log(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(GetRequest("http://127.0.0.1/dashboard/website_project/FetchDataDB/QuizGame.php", SceneManager.GetActiveScene().buildIndex + 1));
     }
 
-    IEnumerator GetRequest(string URL)
+    IEnumerator GetRequest(string URL, int Pathid)
     {
         WWWForm form = new WWWForm();
 
-        form.AddField("PathFace", 1);
+        form.AddField("PathFace", Pathid);
 
         using (UnityWebRequest webRequest = UnityWebRequest.Post(URL, form))
         {
@@ -38,14 +40,15 @@ public class GameManager : MonoBehaviour
                     Debug.LogError(": HTTP Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.Success:
-                    JSONNode jsonNode = JSON.Parse(webRequest.downloadHandler.text);
+                    string data = webRequest.downloadHandler.text;
+                    // JSONNode jsonNode = JSON.Parse(webRequest.downloadHandler.text);
                     // foreach(JSONNode n in jsonNode)
                     // {
-                    //     idList.Add(n["id"]);
-                    //     eyeleft.Add(n["Eyeleft"]);
-                    //     eyeright.Add(n["Eyeright"]);
-                    //     nose.Add(n["nose"]);
-                    //     mouse.Add(n["mouse"]);
+                    //     // idList.Add(n["id"]);
+                    //     // eyeleft.Add(n["Eyeleft"]);
+                    //     // eyeright.Add(n["Eyeright"]);
+                    //     // nose.Add(n["nose"]);
+                    //     // mouse.Add(n["mouse"]);
                     // }
 
                     // datalist.Add(idList);
@@ -76,7 +79,6 @@ public class GameManager : MonoBehaviour
         Texture2D targetTexture = ResizeTexture(loadTexture, 65, 45);
 
         Sprite sprite = Sprite.Create(targetTexture, new Rect(0, 0, targetTexture.width, targetTexture.height), new Vector2(0.5f, 0.5f));
-
 
         // OpenPathFace.transform.Find(folder).transform.GetComponent<SpriteRenderer>().sprite = sprite;
 
