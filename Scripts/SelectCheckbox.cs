@@ -41,7 +41,7 @@ public class SelectCheckbox : MonoBehaviour
         }
 
         randomNum = Random.Range(1, 4);
-        selectAns[randomNum].transform.Find("Image").gameObject.GetComponent<Image>().sprite = G1.ImageUse;
+        selectAns[randomNum - 1].transform.Find("Image").gameObject.GetComponent<Image>().sprite = G1.ImageUse;
         GameManager.User_Ans.Add(randomNum);
 
         selectAns[0].onValueChanged.AddListener((bool on) => {
@@ -96,15 +96,13 @@ public class SelectCheckbox : MonoBehaviour
                 GameManager.User_Select.Add(i + 1);
             }
         }
-
-        // for(int i = 0; i < GameManager.User_ansT.Count; i++){
-        //     Debug.Log(GameManager.User_ansT[i]);
-        // }
-        
+            
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void User_SelectAnsLast(){
+        List<int> CheckAns = new List<int>();
+
         for(int i = 0; i < G1.length_arr; i++){
             if(selectAns[i].transform.GetComponent<Toggle>().isOn){
                 GameManager.User_Select.Add(i + 1);
@@ -112,7 +110,23 @@ public class SelectCheckbox : MonoBehaviour
         }
 
         for(int i = 0; i < GameManager.User_Select.Count; i++){
-            Debug.Log(GameManager.User_Select[i]);
+            if(GameManager.User_Select[i] == GameManager.User_Ans[i]){
+                CheckAns.Add(1);
+            }else{
+                CheckAns.Add(0);
+            }
         }
+
+        G1.PanelTable.SetActive(true);
+
+        for(int i = 0; i < CheckAns.Count; i++){
+            if(CheckAns[i] == 1){
+                G1.PanelTable.transform.Find("Row").transform.GetChild(i).gameObject.GetComponent<Text>().text = "True";
+            }else{
+                G1.PanelTable.transform.Find("Row").transform.GetChild(i).gameObject.GetComponent<Text>().text = "False";
+            }
+        }
+
+
     }
 }
