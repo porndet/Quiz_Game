@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject PanelAnswer;
     [SerializeField] public GameObject ButtonAns; 
     public static List<int> User_ansT = new List<int>();
+    public Sprite ImageUse{
+        get; set;
+    }
+    private string imagePath{
+        get; set;
+    }
     public int length_arr = 4;
 
     void Start(){
@@ -39,34 +45,42 @@ public class GameManager : MonoBehaviour
                     Debug.LogError(": HTTP Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.Success:
-                    string data = webRequest.downloadHandler.text;
-                    Debug.Log(data);
+                    imagePath = webRequest.downloadHandler.text;
+                    LoadImage(imagePath, Pathid);
                     break;
             }
         }
     }
 
-    private void LoadImage(string folder, string filename){
-        string path = @"C:\Users\INK\Desktop\Face-Detection\";
-        string path_2 = folder + @"\" + filename; 
+    private void LoadImage(string filename, int id){
+        string path = "";
+        if(id == 1){
+            path = @"C:\Users\INK\Desktop\Face-Detection\Eyeleft\" + filename;
+        }else if(id == 2){
+            path = @"C:\Users\INK\Desktop\Face-Detection\Eyeright\" + filename;
+        }else if(id == 3){
+            path = @"C:\Users\INK\Desktop\Face-Detection\Nose\" + filename;
+        }else if(id == 4){
+            path = @"C:\Users\INK\Desktop\Face-Detection\Mouth\" + filename;
+        }
 
-        byte[] bytes = File.ReadAllBytes(path + path_2);
+        byte[] bytes = File.ReadAllBytes(path);
 
         Texture2D loadTexture = new Texture2D(1, 1);
         loadTexture.LoadImage(bytes);
 
-        Texture2D targetTexture = ResizeTexture(loadTexture, 65, 45);
+        // Texture2D targetTexture = ResizeTexture(loadTexture, 65, 45);
 
-        Sprite sprite = Sprite.Create(targetTexture, new Rect(0, 0, targetTexture.width, targetTexture.height), new Vector2(0.5f, 0.5f));
-
+        Sprite sprite = Sprite.Create(loadTexture, new Rect(0, 0, loadTexture.width, loadTexture.height), new Vector2(0.5f, 0.5f));
+        ImageUse = sprite;
         // OpenPathFace.transform.Find(folder).transform.GetComponent<SpriteRenderer>().sprite = sprite;
 
         // dataPathFace.Add(sprite);     
     }
 
-    static Texture2D ResizeTexture(Texture2D srcTexture, int newWidth, int newHeight) {
-        var resizedTexture = new Texture2D(newWidth, newHeight);
-        Graphics.ConvertTexture(srcTexture, resizedTexture);
-        return resizedTexture;
-    }
+    // static Texture2D ResizeTexture(Texture2D srcTexture, int newWidth, int newHeight) {
+    //     var resizedTexture = new Texture2D(newWidth, newHeight);
+    //     Graphics.ConvertTexture(srcTexture, resizedTexture);
+    //     return resizedTexture;
+    // }
 }

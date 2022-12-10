@@ -14,10 +14,14 @@ public class SelectCheckbox : MonoBehaviour
         get; set;
     }
 
+    private int randomNum{
+        get; set;
+    }
+
     void Start()
     {
-        SetAnswerObject();
         G1.ButtonAns.SetActive(false);
+        Invoke("SetAnswerObject", 1.0f);
     }
 
 
@@ -35,6 +39,9 @@ public class SelectCheckbox : MonoBehaviour
         for(int i = 0; i < G1.length_arr; i++){
             selectAns[i] = transform.GetChild(i).gameObject.GetComponent<Toggle>();
         }
+
+        randomNum = Random.Range(1, 4);
+        selectAns[randomNum].transform.Find("Image").gameObject.GetComponent<Image>().sprite = G1.ImageUse;
 
         selectAns[0].onValueChanged.AddListener((bool on) => {
             if(on) {
@@ -94,5 +101,17 @@ public class SelectCheckbox : MonoBehaviour
         // }
         
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void User_SelectAnsLast(){
+        for(int i = 0; i < G1.length_arr; i++){
+            if(selectAns[i].transform.GetComponent<Toggle>().isOn){
+                GameManager.User_ansT.Add(i + 1);
+            }
+        }
+
+        for(int i = 0; i < GameManager.User_ansT.Count; i++){
+            Debug.Log(GameManager.User_ansT[i]);
+        }
     }
 }
