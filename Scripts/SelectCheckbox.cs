@@ -8,7 +8,7 @@ using System.IO;
 public class SelectCheckbox : MonoBehaviour
 {
     [SerializeField] private GameManager G1;
-    public static List<Sprite> imgCorect_Cancel = new List<Sprite>();
+    // public static List<Sprite> imgCorect_Cancel = new List<Sprite>();
     
     public Toggle[] selectAns{
         get; set;
@@ -107,16 +107,16 @@ public class SelectCheckbox : MonoBehaviour
         Texture2D loadTexture = new Texture2D(1, 1);
         loadTexture.LoadImage(bytes);
         Sprite sprite = Sprite.Create(loadTexture, new Rect(0, 0, loadTexture.width, loadTexture.height), new Vector2(0.5f, 0.5f));
-        imgCorect_Cancel.Add(sprite);
+        // imgCorect_Cancel.Add(sprite);
     }
 
     public void User_SelectAnsLast(){
         List<int> CheckAns = new List<int>();
-        string img_correct = @"C:\Users\INK\Desktop\2D Game\Quiz Game\Assets\Image\checked.png";
-        string img_mistake = @"C:\Users\INK\Desktop\2D Game\Quiz Game\Assets\Image\cancel.png";
+        // string img_correct = @"C:\Users\INK\Desktop\2D Game\Quiz Game\Assets\Image\checked.png";
+        // string img_mistake = @"C:\Users\INK\Desktop\2D Game\Quiz Game\Assets\Image\cancel.png";
 
-        Loadimage_CorrectCacel(img_correct);
-        Loadimage_CorrectCacel(img_mistake);
+        // Loadimage_CorrectCacel(img_correct);
+        // Loadimage_CorrectCacel(img_mistake);
 
         for(int i = 0; i < G1.length_arr; i++){
             if(selectAns[i].transform.GetComponent<Toggle>().isOn){
@@ -136,9 +136,9 @@ public class SelectCheckbox : MonoBehaviour
 
         for(int i = 0; i < CheckAns.Count; i++){
             if(CheckAns[i] == 1){
-                G1.PanelTable.transform.Find("Row").transform.GetChild(i).gameObject.GetComponent<Image>().sprite = imgCorect_Cancel[0];
+                G1.PanelTable.transform.Find("Row").transform.GetChild(i).gameObject.GetComponent<Image>().sprite = G1.img_correct;
             }else{
-                G1.PanelTable.transform.Find("Row").transform.GetChild(i).gameObject.GetComponent<Image>().sprite = imgCorect_Cancel[1];
+                G1.PanelTable.transform.Find("Row").transform.GetChild(i).gameObject.GetComponent<Image>().sprite = G1.img_cancel;
             }
         }
 

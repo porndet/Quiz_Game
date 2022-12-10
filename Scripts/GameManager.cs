@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject PanelAnswer;
     [SerializeField] public GameObject ButtonAns; 
+    [SerializeField] public Sprite img_correct; 
+    [SerializeField] public Sprite img_cancel; 
     public static List<int> User_Select = new List<int>();
     public static List<int> User_Ans = new List<int>();
     [SerializeField] public GameObject PanelTable; 
