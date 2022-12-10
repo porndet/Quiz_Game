@@ -42,6 +42,7 @@ public class SelectCheckbox : MonoBehaviour
 
         randomNum = Random.Range(1, 4);
         selectAns[randomNum].transform.Find("Image").gameObject.GetComponent<Image>().sprite = G1.ImageUse;
+        GameManager.User_Ans.Add(randomNum);
 
         selectAns[0].onValueChanged.AddListener((bool on) => {
             if(on) {
@@ -92,7 +93,7 @@ public class SelectCheckbox : MonoBehaviour
     public void User_SelectAns(){
         for(int i = 0; i < G1.length_arr; i++){
             if(selectAns[i].transform.GetComponent<Toggle>().isOn){
-                GameManager.User_ansT.Add(i + 1);
+                GameManager.User_Select.Add(i + 1);
             }
         }
 
@@ -106,12 +107,12 @@ public class SelectCheckbox : MonoBehaviour
     public void User_SelectAnsLast(){
         for(int i = 0; i < G1.length_arr; i++){
             if(selectAns[i].transform.GetComponent<Toggle>().isOn){
-                GameManager.User_ansT.Add(i + 1);
+                GameManager.User_Select.Add(i + 1);
             }
         }
 
-        for(int i = 0; i < GameManager.User_ansT.Count; i++){
-            Debug.Log(GameManager.User_ansT[i]);
+        for(int i = 0; i < GameManager.User_Select.Count; i++){
+            Debug.Log(GameManager.User_Select[i]);
         }
     }
 }
