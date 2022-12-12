@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     imagePath = webRequest.downloadHandler.text;
+                    Debug.Log(webRequest.downloadHandler.text);
                     LoadImage(imagePath, Pathid);
                     break;
             }
