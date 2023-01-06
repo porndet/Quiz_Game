@@ -8,6 +8,7 @@ using System.IO;
 public class SelectCheckbox : MonoBehaviour
 {
     [SerializeField] private GameManager G1;
+    [SerializeField] private GameObject Panel_Fade;
     // public static List<Sprite> imgCorect_Cancel = new List<Sprite>();
     
     public Toggle[] selectAns{
@@ -24,7 +25,7 @@ public class SelectCheckbox : MonoBehaviour
     void Start()
     {
         G1.ButtonAns.SetActive(false);
-        Invoke("SetAnswerObject", 1.0f);
+        Invoke("SetAnswerObject", 0.4f);
     }
 
 
@@ -90,6 +91,8 @@ public class SelectCheckbox : MonoBehaviour
             }
             isShowbtn = true;
         });
+
+        Panel_Fade.SetActive(false);
     }
 
     public void User_SelectAns(){
@@ -101,7 +104,6 @@ public class SelectCheckbox : MonoBehaviour
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
     void Loadimage_CorrectCacel(string path){
         byte[] bytes = File.ReadAllBytes(path);
         Texture2D loadTexture = new Texture2D(1, 1);
