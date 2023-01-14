@@ -60,13 +60,13 @@ public class GameManager : MonoBehaviour
     private void LoadImage(string filename, int id){
         string path = "";
         if(id == 1){
-            path = @"C:\Users\INK\Desktop\Face-Detection\Eyeleft\" + filename;
+            path = @"C:\Users\INK\Desktop\Face-Detection\" + filename;
         }else if(id == 2){
-            path = @"C:\Users\INK\Desktop\Face-Detection\Eyeright\" + filename;
+            path = @"C:\Users\INK\Desktop\Face-Detection\" + filename;
         }else if(id == 3){
-            path = @"C:\Users\INK\Desktop\Face-Detection\Nose\" + filename;
+            path = @"C:\Users\INK\Desktop\Face-Detection\" + filename;
         }else if(id == 4){
-            path = @"C:\Users\INK\Desktop\Face-Detection\Mouth\" + filename;
+            path = @"C:\Users\INK\Desktop\Face-Detection\" + filename;
         }
 
         byte[] bytes = File.ReadAllBytes(path);
