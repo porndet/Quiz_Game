@@ -10,6 +10,7 @@ public class SelectCheckbox : MonoBehaviour
     [SerializeField] private GameManager G1;
     [SerializeField] private GameObject Panel_Fade;
     [SerializeField] private GameObject Quiznumber;
+
     
     public Toggle[] selectAns{
         get; set;
@@ -106,7 +107,7 @@ public class SelectCheckbox : MonoBehaviour
     public void User_SelectAns(){
         for(int i = 0; i < G1.length_arr; i++){
             if(selectAns[i].transform.GetComponent<Toggle>().isOn){
-                GameManager.User_Select.Add(i + 1);
+                GameManager.User_Select.Add(i);
             }
         }
 
@@ -122,6 +123,7 @@ public class SelectCheckbox : MonoBehaviour
 
     public void User_SelectAnsLast(){
         List<int> CheckAns = new List<int>();
+        int Score = 0;
         // string img_correct = @"C:\Users\INK\Desktop\2D Game\Quiz Game\Assets\Image\checked.png";
         // string img_mistake = @"C:\Users\INK\Desktop\2D Game\Quiz Game\Assets\Image\cancel.png";
 
@@ -130,7 +132,7 @@ public class SelectCheckbox : MonoBehaviour
 
         for(int i = 0; i < G1.length_arr; i++){
             if(selectAns[i].transform.GetComponent<Toggle>().isOn){
-                GameManager.User_Select.Add(i + 1);
+                GameManager.User_Select.Add(i);
             }
         }
 
@@ -146,12 +148,17 @@ public class SelectCheckbox : MonoBehaviour
 
         for(int i = 0; i < CheckAns.Count; i++){
             if(CheckAns[i] == 1){
+                Score += 25;
                 G1.PanelTable.transform.Find("Row").transform.GetChild(i).gameObject.GetComponent<Image>().sprite = G1.img_correct;
             }else{
                 G1.PanelTable.transform.Find("Row").transform.GetChild(i).gameObject.GetComponent<Image>().sprite = G1.img_cancel;
             }
         }
 
+        if(Score < 75)
+            G1.TextScore.GetComponent<Text>().text = "<color=red>" + Score.ToString() + "</color>/100";
+        else
+            G1.TextScore.GetComponent<Text>().text = "<color=green>" + Score.ToString() + "</color>/100";
 
     }
 }

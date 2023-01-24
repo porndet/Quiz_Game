@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public static List<int> User_Select = new List<int>();
     public static List<int> User_Ans = new List<int>();
     [SerializeField] public GameObject PanelTable; 
+    [SerializeField] public GameObject TextScore;
     public Sprite ImageUse{
         get; set;
     }
