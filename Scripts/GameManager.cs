@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         get; set;
     }
 
-    private List<Sprite> Image_Mistake{
+    public List<Sprite> Image_Mistake{
         get; set;
     } = new List<Sprite>();
     private List<string> Image_PathMistake{
@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     imagePath = webRequest.downloadHandler.text;
-                    Debug.Log(webRequest.downloadHandler.text);
                     LoadImage(imagePath, Pathid);
                     break;
             }
@@ -91,8 +90,7 @@ public class GameManager : MonoBehaviour
                         Image_PathMistake.Add(n["filename"]);
 
                     foreach(string s in Image_PathMistake){
-                        Debug.Log(s);
-                        LoadImage(s, Pathid);
+                        LoadImage_Mistake(s, Pathid);
                     }
 
                     break;
@@ -124,11 +122,11 @@ public class GameManager : MonoBehaviour
         private void LoadImage_Mistake(string filename, int id){
         string path = "";
         if(id == 1 || id == 2){
-            path = @"C:\Users\INK\Desktop\Path_Face\" + filename;
+            path = @"C:\Users\INK\Desktop\Path_Face\Eye\" + filename;
         }else if(id == 3){
-            path = @"C:\Users\INK\Desktop\Path_Face\" + filename;
+            path = @"C:\Users\INK\Desktop\Path_Face\Nose\" + filename;
         }else if(id == 4){
-            path = @"C:\Users\INK\Desktop\Path_Face\" + filename;
+            path = @"C:\Users\INK\Desktop\Path_Face\Mouth\" + filename;
         }
 
         byte[] bytes = File.ReadAllBytes(path);

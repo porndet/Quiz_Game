@@ -9,7 +9,7 @@ public class SelectCheckbox : MonoBehaviour
 {
     [SerializeField] private GameManager G1;
     [SerializeField] private GameObject Panel_Fade;
-    // public static List<Sprite> imgCorect_Cancel = new List<Sprite>();
+    [SerializeField] private GameObject Quiznumber;
     
     public Toggle[] selectAns{
         get; set;
@@ -25,7 +25,8 @@ public class SelectCheckbox : MonoBehaviour
     void Start()
     {
         G1.ButtonAns.SetActive(false);
-        Invoke("SetAnswerObject", 0.4f);
+        Quiznumber.GetComponent<Text>().text = "Quiz " + (SceneManager.GetActiveScene().buildIndex + 1).ToString();
+        Invoke("SetAnswerObject", 0.7f);
     }
 
 
@@ -44,9 +45,16 @@ public class SelectCheckbox : MonoBehaviour
             selectAns[i] = transform.GetChild(i).gameObject.GetComponent<Toggle>();
         }
 
-        randomNum = Random.Range(1, 4);
-        selectAns[randomNum - 1].transform.Find("Image").gameObject.GetComponent<Image>().sprite = G1.ImageUse;
+        randomNum = Random.Range(0, 3);
+        selectAns[randomNum].transform.Find("Image").gameObject.GetComponent<Image>().sprite = G1.ImageUse;
         GameManager.User_Ans.Add(randomNum);
+
+        for(int i = 0; i < 4; i++){
+            if(i != randomNum){
+                selectAns[i].transform.Find("Image").gameObject.GetComponent<Image>().sprite = G1.Image_Mistake[0];
+                G1.Image_Mistake.RemoveAt(0);
+            }
+        }
 
         selectAns[0].onValueChanged.AddListener((bool on) => {
             if(on) {
