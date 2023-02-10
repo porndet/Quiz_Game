@@ -232,7 +232,9 @@ MonoBehaviour:
   ButtonAns: {fileID: 88258217}
   img_correct: {fileID: 0}
   img_cancel: {fileID: 0}
+  imageQuestion: {fileID: 1253832961}
   PanelTable: {fileID: 0}
+  TextScore: {fileID: 0}
   length_arr: 4
 --- !u!4 &49384578
 Transform:

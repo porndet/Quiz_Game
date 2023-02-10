@@ -11,7 +11,6 @@ public class SelectCheckbox : MonoBehaviour
     [SerializeField] private GameObject Panel_Fade;
     [SerializeField] private GameObject Quiznumber;
 
-    
     public Toggle[] selectAns{
         get; set;
     }

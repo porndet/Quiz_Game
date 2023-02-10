@@ -232,6 +232,7 @@ MonoBehaviour:
   ButtonAns: {fileID: 88258217}
   img_correct: {fileID: 21300000, guid: 4190da632c8fcde428ce469ed36da953, type: 3}
   img_cancel: {fileID: 21300000, guid: 1b61e5857f872584b9ff08516955ec9c, type: 3}
+  imageQuestion: {fileID: 1253832961}
   PanelTable: {fileID: 382462427}
   TextScore: {fileID: 1841282912}
   length_arr: 4
